@@ -1,4 +1,4 @@
-package com.stockmarket.companydata;
+package companydata;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
