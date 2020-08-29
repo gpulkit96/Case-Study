@@ -25,11 +25,11 @@ public class SectorService {
     public Optional<Sector> getSector(Integer id) {
         return sectorRepository.findById(id);
     }
-    public void addSector(Sector sector) {
-        sectorRepository.save(sector);
+    public Sector addSector(Sector sector) {
+        return sectorRepository.save(sector);
     }
-    public void updateSector(Integer id, Sector sector) {
-        sectorRepository.save(sector);
+    public Sector updateSector(Integer id, Sector sector) {
+        return sectorRepository.save(sector);
     }
     public void deleteSector(Integer id) {
         sectorRepository.deleteById(id);

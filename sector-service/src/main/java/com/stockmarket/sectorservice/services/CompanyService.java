@@ -24,11 +24,11 @@ public class CompanyService {
 	public Optional<Company> getCompany(Integer id) {
 		return companyRepository.findById(id);
 	}
-	public void addCompany(Company company) {
-		companyRepository.save(company);
+	public Company addCompany(Company company) {
+		return companyRepository.save(company);
 	}
-	public void updateCompany(Company company) {
-		companyRepository.save(company);
+	public Company updateCompany(Company company) {
+		return companyRepository.save(company);
 	}
 	public void deleteCompany(Integer id) {
 		companyRepository.deleteById(id);

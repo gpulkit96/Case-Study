@@ -3,6 +3,8 @@ package com.stockmarket.sectorservice.controllers;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -28,14 +30,14 @@ public class CompanyController {
 	}
 	
 	@PostMapping("/{sectorId}/companies")
-	public void AddCompany(@RequestBody Company company, @PathVariable Integer sectorId) {
+	public ResponseEntity<Company> AddCompany(@RequestBody Company company, @PathVariable Integer sectorId) {
 		company.setSector(new Sector(sectorId,"",""));
-		companyService.addCompany(company);
+		return new ResponseEntity<Company>(companyService.addCompany(company), HttpStatus.OK);
 	}
 	@PutMapping("/{sectorId}/companies/{id}")
-	public void UpdateCompany(@RequestBody Company company, @PathVariable Integer sectorId) {
+	public ResponseEntity<Company> UpdateCompany(@RequestBody Company company, @PathVariable Integer sectorId) {
 		company.setSector(new Sector(sectorId,"",""));
-		companyService.updateCompany(company);
+		return new ResponseEntity<Company>(companyService.updateCompany(company), HttpStatus.OK);
 	}
 	@DeleteMapping("/{sectorId}/companies/{id}")
 	public void DeleteCompany(@PathVariable Integer id) {
