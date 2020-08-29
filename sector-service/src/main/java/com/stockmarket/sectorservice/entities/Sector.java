@@ -1,15 +1,14 @@
 package com.stockmarket.sectorservice.entities;
 
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+//import java.util.Set;
 
 @Entity
+//@Table(name="sector")
 public class Sector {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+//    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String name;
     private String brief;
@@ -44,4 +43,8 @@ public class Sector {
     public void setBrief(String brief) {
         this.brief = brief;
     }
+
+//    @OneToOne(mappedBy="sector")
+//    private SectorCompany sectorCompany;
+
 }
