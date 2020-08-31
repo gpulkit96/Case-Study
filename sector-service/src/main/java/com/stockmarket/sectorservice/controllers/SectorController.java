@@ -13,7 +13,7 @@ import java.util.Optional;
 @RestController
 @RequestMapping("/sectors")
 public class SectorController {
-
+	
     @Autowired
     private SectorService sectorService;
 
@@ -37,5 +37,9 @@ public class SectorController {
     @DeleteMapping("{id}")
     public void DeleteSector(@PathVariable Integer id){
         sectorService.deleteSector(id);
+    }
+    @GetMapping("/{id}/companies")
+    public List<String> getAllCompanies(@PathVariable Integer id){
+    	return sectorService.getSectorCompanies(id);
     }
 }

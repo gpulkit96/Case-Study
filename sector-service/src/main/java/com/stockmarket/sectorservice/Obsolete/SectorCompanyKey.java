@@ -1,3 +1,4 @@
+package com.stockmarket.sectorservice.Obsolete;
 //package com.stockmarket.sectorservice.entities;
 //
 //import java.io.Serializable;
