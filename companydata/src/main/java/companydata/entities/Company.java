@@ -1,7 +1,10 @@
 package companydata.entities;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 
 @Entity
 public class Company {
@@ -10,27 +13,40 @@ public class Company {
 	private int id;
 	private String name;
 	private String ceo;
-	private int sector_id;
-	private int contant_id;
-	private int stock_exchange_id;
 	private String brief;
+	private String board_of_directors;
 	private String code;
+	private int contant_id;
+	@OneToOne(cascade=CascadeType.ALL)
+	@JoinColumn(name="ipo_id")
+	private Ipo ipo;
+	private int stock_exchange_id;
+	private int sector_id;
 	
 	public Company() {
 		
 	}
 	
-	public Company(int id, String name, String ceo, int sector_id, int contant_id, int stock_exchange_id, String brief,
-			String code) {
+	public Company(int id, String name, String ceo, String brief, String code, int contant_id, Ipo ipo,
+			int stock_exchange_id, int sector_id) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.ceo = ceo;
-		this.sector_id = sector_id;
-		this.contant_id = contant_id;
-		this.stock_exchange_id = stock_exchange_id;
 		this.brief = brief;
 		this.code = code;
+		this.contant_id = contant_id;
+		this.ipo = ipo;
+		this.stock_exchange_id = stock_exchange_id;
+		this.sector_id = sector_id;
+	}
+
+	public Ipo getIpo() {
+		return ipo;
+	}
+
+	public void setIpo(Ipo ipo) {
+		this.ipo = ipo;
 	}
 
 	public int getId() {

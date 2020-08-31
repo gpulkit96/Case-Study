@@ -14,7 +14,7 @@ public class CompanyService {
 
     @Autowired
     private CompanyRepository companyRepository;
-
+    
     public List<Company> getAllCompanies() {
         List<Company> companies = new ArrayList<>();
         companyRepository.findAll()
