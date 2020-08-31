@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import companydata.entities.Company;
+import companydata.models.CompanyList;
 import companydata.services.CompanyService;
 
 @RestController
@@ -31,7 +32,11 @@ public class CompanyController {
     public Optional<Company> getCompanyById(@PathVariable Integer id){
         return companyService.getCompany(id);
     }
-
+    @GetMapping("/sector/{id}")
+    public CompanyList getCompaniesBySector(@PathVariable Integer id){
+    	return companyService.getSectorCompanies(id);
+    }
+    
     @PostMapping("")
     public void AddCompany(@RequestBody Company company){
     	companyService.addCompany(company);

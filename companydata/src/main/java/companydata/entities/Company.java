@@ -21,7 +21,7 @@ public class Company {
 	@JoinColumn(name="ipo_id")
 	private Ipo ipo;
 	private int stock_exchange_id;
-	private int sector_id;
+	private Integer sector_id;
 	
 	public Company() {
 		
@@ -73,11 +73,11 @@ public class Company {
 		this.ceo = ceo;
 	}
 
-	public int getSector_id() {
+	public Integer getSector_id() {
 		return sector_id;
 	}
 
-	public void setSector_id(int sector_id) {
+	public void setSector_id(Integer sector_id) {
 		this.sector_id = sector_id;
 	}
 
