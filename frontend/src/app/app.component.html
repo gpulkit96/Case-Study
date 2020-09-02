@@ -1,9 +1,30 @@
-<div class="container">
+<!-- <div class="container">
   <h1>My App</h1>
 
 <app-new-company></app-new-company>
 <app-upload-excel></app-upload-excel>
 <app-compare-charts></app-compare-charts>
-<!-- <app-add-company></app-add-company>
-<app-edit-company></app-edit-company> -->
+<app-add-company></app-add-company>
+<app-edit-company></app-edit-company>
+</div> -->
+
+
+<!-- <div class="container">
+  <ul>
+    <li><a [routerLink]="['home']">Compare charts</a></li>
+    <li><a [routerLink]="['new-company']">New company</a></li>
+    <li><a [routerLink]="['upload-excel']">Upload excel</a></li>
+    <li style="float:right"><a>Stock markert charting application</a></li>
+    <router-outlet></router-outlet>
+  </ul>
+</div> -->
+
+
+<div class="container">
+  <h1>Stock markert charting application</h1>
+
+  <a [routerLink]="['home']">Compare charts</a> |
+  <a [routerLink]="['new-company']">New company</a> |
+  <a [routerLink]="['upload-excel']">Upload excel</a>
+  <router-outlet></router-outlet>
 </div>
