@@ -8,23 +8,32 @@
 <app-edit-company></app-edit-company>
 </div> -->
 
-
-<!-- <div class="container">
-  <ul>
-    <li><a [routerLink]="['home']">Compare charts</a></li>
-    <li><a [routerLink]="['new-company']">New company</a></li>
-    <li><a [routerLink]="['upload-excel']">Upload excel</a></li>
-    <li style="float:right"><a>Stock markert charting application</a></li>
-    <router-outlet></router-outlet>
-  </ul>
-</div> -->
-
-
 <div class="container">
   <h1>Stock markert charting application</h1>
-
-  <a [routerLink]="['home']">Compare charts</a> |
-  <a [routerLink]="['new-company']">New company</a> |
-  <a [routerLink]="['upload-excel']">Upload excel</a>
+  <div class="topnav">
+    
+    <a [routerLink]="['home']">Compare charts</a>
+    <a [routerLink]="['new-company']">New company</a>
+    <a [routerLink]="['upload-excel']">Upload excel</a>
+  </div>
   <router-outlet></router-outlet>
 </div>
+
+<!-- <h1>Hello User</h1>
+
+<table *ngIf="message==null">
+    <tr>
+        <th>id</th>
+        <th>employee_name</th>
+        <th>employee_salary</th>
+        <th>employee_age</th>
+    </tr>
+    <tr *ngFor="let emp of emps">
+        <td>{{emp.id}}</td>
+        <td>{{emp.employee_name}}</td>
+        <td>{{emp.employee_salary}}</td>
+        <td>{{emp.employee_age}}</td>
+    </tr>
+</table>
+
+<p *ngIf="message!=null">{{message}}</p> -->
