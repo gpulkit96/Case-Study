@@ -6,12 +6,14 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BarChartComponent } from './bar-chart/bar-chart.component';
 import { LineChartComponent } from './line-chart/line-chart.component';
+import { AngularExcelComponent } from './angular-excel/angular-excel.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     BarChartComponent,
-    LineChartComponent
+    LineChartComponent,
+    AngularExcelComponent
   ],
   imports: [
     BrowserModule,
