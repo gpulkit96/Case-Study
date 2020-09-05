@@ -45,9 +45,9 @@ public class UserController {
     }
     
     @PostMapping("/register")
-    public ResponseEntity<User> getSignup(@RequestBody User user){
-        User u = userService.getSignup(user);
-        return new ResponseEntity<User>(u, HttpStatus.OK);
+    public ResponseEntity<String> getSignup(@RequestBody User user){
+        String u = userService.getSignup(user);
+        return new ResponseEntity<String>(u, HttpStatus.OK);
     }
     @PostMapping("{userId}/contact")
     public ResponseEntity<Boolean> addContact(@RequestBody Contact contact, @PathVariable Integer userId){
@@ -58,8 +58,8 @@ public class UserController {
     public String updatePassword(@RequestBody Passwords passwords, @PathVariable Integer userId){
     	return userService.updatePassword(passwords, userId);
     }
-//    @PutMapping("{userId}/updateContact")
-//    public String updateContact(@RequestBody Contact contact, @PathVariable Integer userId) {
-//    	return userService.updateContact(contact, userId);
-//    }
+    @PutMapping("{userId}/updateContact")
+    public String updateContact(@RequestBody Contact contact, @PathVariable Integer userId) {
+    	return userService.updateContact(contact, userId);
+    }
 }
