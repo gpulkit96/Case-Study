@@ -41,7 +41,7 @@ public class IpoController {
     	ipoService.updateIpo(id, ipo);
     }
     @DeleteMapping("{id}")
-    public void DeleteIpo(@PathVariable Integer id){
+    public void deleteIpo(@PathVariable Integer id){
     	ipoService.deleteIpo(id);
     }
 }

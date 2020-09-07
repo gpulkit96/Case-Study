@@ -4,9 +4,6 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -45,11 +42,11 @@ public class CompanyController {
     	companyService.addCompany(company);
     }
     @PutMapping("{id}")
-    public void UpdateCompany(@PathVariable Integer id, @RequestBody Company company){
+    public void updateCompany(@PathVariable Integer id, @RequestBody Company company){
     	companyService.updateCompany(id, company);
     }
     @DeleteMapping("{id}")
-    public void DeleteCompany(@PathVariable Integer id){
+    public void deleteCompany(@PathVariable Integer id){
     	companyService.deleteCompany(id);
     }
 }
