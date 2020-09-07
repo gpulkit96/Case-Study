@@ -18,20 +18,13 @@ public class Ipo {
 	private int total_shares;
 	@OneToOne(mappedBy = "ipo")
 	private Company company;
-	
-	public Company getCompany() {
-		return company;
-	}
-
-	public void setCompany(Company company) {
-		this.company = company;
-	}
 
 	public Ipo() {
 		
 	}
 	
-	public Ipo(int id, Date close_date_time, Date open_date_time, String remarks, double share_price, int total_shares) {
+	public Ipo(int id, Date close_date_time, Date open_date_time, String remarks, double share_price,
+			int total_shares, Company company) {
 		super();
 		this.id = id;
 		this.close_date_time = close_date_time;
@@ -39,6 +32,15 @@ public class Ipo {
 		this.remarks = remarks;
 		this.share_price = share_price;
 		this.total_shares = total_shares;
+		this.company = company;
+	}
+
+	public Company getCompany() {
+		return company;
+	}
+
+	public void setCompany(Company company) {
+		this.company = company;
 	}
 	public int getId() {
 		return id;
