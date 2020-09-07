@@ -16,11 +16,10 @@ public class User {
 	private Integer id;
     private String username;
     private String password;
-//    private Integer contact_id;
     private String user_type;
     
     @OneToOne(cascade=CascadeType.ALL)
-    @JoinColumn(name="contact_id")
+    @JoinColumn(name="contact_id", unique = true)
     private Contact contact;
     
     public User() {}
@@ -65,14 +64,6 @@ public class User {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-
-//	public Integer getContact_id() {
-//		return contact_id;
-//	}
-//
-//	public void setContact_id(Integer contact_id) {
-//		this.contact_id = contact_id;
-//	}
 	
 	public String getUser_type() {
 		return user_type;
