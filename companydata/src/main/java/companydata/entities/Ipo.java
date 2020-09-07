@@ -4,6 +4,7 @@ import java.util.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 
 @Entity
 public class Ipo {
@@ -15,7 +16,17 @@ public class Ipo {
 	private String remarks;
 	private double share_price;
 	private int total_shares;
+	@OneToOne(mappedBy = "ipo")
+	private Company company;
 	
+	public Company getCompany() {
+		return company;
+	}
+
+	public void setCompany(Company company) {
+		this.company = company;
+	}
+
 	public Ipo() {
 		
 	}

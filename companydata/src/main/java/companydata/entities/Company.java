@@ -18,7 +18,7 @@ public class Company {
 	private String code;
 	private int contant_id;
 	@OneToOne(cascade=CascadeType.ALL)
-	@JoinColumn(name="ipo_id")
+	@JoinColumn(name="ipo_id", unique = true)	
 	private Ipo ipo;
 	private int stock_exchange_id;
 	private Integer sector_id;
