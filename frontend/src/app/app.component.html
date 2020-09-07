@@ -18,6 +18,7 @@
     <a [routerLink]="['new-company']">New company</a>
     <a [routerLink]="['upload-excel']">Upload excel</a>
     <a [routerLink]="['manage-companies']">Manage Companies</a>
+    <a [routerLink]="['login']" (click)="getLogout()">Logout</a>
   </div>
   <router-outlet></router-outlet>
 </div>

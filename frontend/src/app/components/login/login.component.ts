@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpHeaders, HttpClient } from '@angular/common/http';
 import {NgForm} from '@angular/forms';
+import { Router } from '@angular/router';
 import { User } from './User';
+import { UserService } from '../user.service';
 // const httpOptions = {
 //   headers: new HttpHeaders({
 //     'Content-Type': 'application/json'
@@ -17,7 +19,7 @@ const headers = {'Content-Type': 'application/json'}
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private http:HttpClient) {}
+  constructor(private http:HttpClient, private userService:UserService,private router:Router) {}
   
   user= new User();
   login:boolean;
@@ -31,5 +33,13 @@ export class LoginComponent implements OnInit {
       console.log(data);
     }
     )
+    this.getLogin();
+  }
+  getLogin(){
+    console.log('tring to get login')
+    if(this.login){
+      this.userService.user.isValid = true;
+      this.router.navigate(['','home'])
+    }
   }
 }
