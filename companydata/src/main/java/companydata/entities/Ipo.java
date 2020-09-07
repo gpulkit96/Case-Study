@@ -15,14 +15,12 @@ public class Ipo {
 	private String remarks;
 	private double share_price;
 	private int total_shares;
-	private int company_id;
 	
 	public Ipo() {
 		
 	}
 	
-	public Ipo(int id, Date close_date_time, Date open_date_time, String remarks, double share_price, int total_shares,
-			int company_id) {
+	public Ipo(int id, Date close_date_time, Date open_date_time, String remarks, double share_price, int total_shares) {
 		super();
 		this.id = id;
 		this.close_date_time = close_date_time;
@@ -30,7 +28,6 @@ public class Ipo {
 		this.remarks = remarks;
 		this.share_price = share_price;
 		this.total_shares = total_shares;
-		this.company_id = company_id;
 	}
 	public int getId() {
 		return id;
@@ -68,12 +65,5 @@ public class Ipo {
 	public void setTotal_shares(int total_shares) {
 		this.total_shares = total_shares;
 	}
-	public int getCompany_id() {
-		return company_id;
-	}
-	public void setCompany_id(int company_id) {
-		this.company_id = company_id;
-	}
-	
 	
 }

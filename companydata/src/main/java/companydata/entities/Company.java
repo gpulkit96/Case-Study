@@ -15,6 +15,14 @@ public class Company {
 	private String ceo;
 	private String brief;
 	private String board_of_directors;
+	public String getBoard_of_directors() {
+		return board_of_directors;
+	}
+
+	public void setBoard_of_directors(String board_of_directors) {
+		this.board_of_directors = board_of_directors;
+	}
+
 	private String code;
 	private int contant_id;
 	@OneToOne(cascade=CascadeType.ALL)
@@ -24,7 +32,6 @@ public class Company {
 	private Integer sector_id;
 	
 	public Company() {
-		
 	}
 	
 	public Company(int id, String name, String ceo, String brief, String code, int contant_id, Ipo ipo,

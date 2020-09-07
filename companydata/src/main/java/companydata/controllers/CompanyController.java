@@ -37,12 +37,12 @@ public class CompanyController {
     	return companyService.getSectorCompanies(id);
     }
     
-    @PostMapping("")
-    public void AddCompany(@RequestBody Company company){
+    @PostMapping("/add")
+    public void addCompany(@RequestBody Company company){
     	companyService.addCompany(company);
     }
     @PutMapping("{id}")
-    public void UpdateCompany(@PathVariable Integer id, Company company){
+    public void UpdateCompany(@PathVariable Integer id, @RequestBody Company company){
     	companyService.updateCompany(id, company);
     }
     @DeleteMapping("{id}")
@@ -50,16 +50,3 @@ public class CompanyController {
     	companyService.deleteCompany(id);
     }
 }
-
-
-/*public class CompanyController {
-
-	@RequestMapping("/{name}")
-	public Company getCompany(@PathVariable("name") String name) {
-
-		Company company = new Company(1,name,"Charles",123,456,789,"NA",
-				"None");
-		return company;
-	}
-}
-*/

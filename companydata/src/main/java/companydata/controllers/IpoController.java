@@ -32,12 +32,12 @@ public class IpoController {
         return ipoService.getIpo(id);
     }
 
-    @PostMapping("")
-    public void AddIpo(@RequestBody Ipo ipo){
+    @PostMapping("/add")
+    public void addIpo(@RequestBody Ipo ipo){
     	ipoService.addIpo(ipo);
     }
     @PutMapping("{id}")
-    public void UpdateIpo(@PathVariable Integer id, Ipo ipo){
+    public void updateIpo(@PathVariable Integer id, @RequestBody Ipo ipo){
     	ipoService.updateIpo(id, ipo);
     }
     @DeleteMapping("{id}")

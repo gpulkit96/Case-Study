@@ -1,6 +1,5 @@
 package com.stockmarket.sectorservice.entities;
 
-
 import javax.persistence.*;
 //import java.util.Set;
 

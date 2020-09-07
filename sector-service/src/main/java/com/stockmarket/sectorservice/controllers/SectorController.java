@@ -27,15 +27,15 @@ public class SectorController {
     }
 
     @PostMapping("")
-    public ResponseEntity<Sector> AddSector(@RequestBody Sector sector){
+    public ResponseEntity<Sector> addSector(@RequestBody Sector sector){
         return new ResponseEntity<Sector>(sectorService.addSector(sector), HttpStatus.OK);
     }
     @PutMapping("{id}")
-    public ResponseEntity<Sector> UpdateSector(@PathVariable Integer id, Sector sector){
+    public ResponseEntity<Sector> updateSector(@PathVariable Integer id, @RequestBody Sector sector){
         return new ResponseEntity<Sector>(sectorService.updateSector(id, sector), HttpStatus.OK);
     }
     @DeleteMapping("{id}")
-    public void DeleteSector(@PathVariable Integer id){
+    public void deleteSector(@PathVariable Integer id){
         sectorService.deleteSector(id);
     }
     @GetMapping("/{id}/companies")
