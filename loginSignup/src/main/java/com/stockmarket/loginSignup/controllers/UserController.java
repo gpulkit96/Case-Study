@@ -25,7 +25,6 @@ public class UserController {
 	@Autowired
     private UserService userService;
     
-    
     @GetMapping("/greet/{fn}/{ln}")
     public String greet(@PathVariable String fn, @PathVariable String ln){
     	return "Welcome "+fn+ " "+ln;
@@ -35,7 +34,7 @@ public class UserController {
     	return userService.getUser(id);	
     }
     @GetMapping("")
-    public List<User> getUser() {
+    public List<User> getUsers(){
     	return userService.getAllUsers();	
     }
     @PostMapping("/login")

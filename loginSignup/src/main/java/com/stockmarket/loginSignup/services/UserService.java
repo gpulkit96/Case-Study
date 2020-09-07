@@ -18,30 +18,19 @@ public class UserService {
     private UserRepository repo;
 
     public boolean getLogin(User user){
-        Iterable<User> iterable = repo.findAll();
-		boolean found = false;
-		for(User u : iterable) {
-            if(u.getUsername().equals(user.getUsername())){
-                found = u.getPassword().equals(user.getPassword());
-                break;
-            }
+    	//user is not null-->check at UI end
+    	Optional<User> userentity = repo.findById(user.getId());
+		if(userentity.isPresent()) {
+            return userentity.get().getPassword().equals(user.getPassword()); 
 		}
-
-        return found;
+        return false;
     }
     
 	public String getSignup(User user) {
-		// logic -> user.username != null,
-		Iterable<User> iterable = repo.findAll();
-		boolean found = false;
-		for(User u : iterable) {
-            if(u.getUsername().equals(user.getUsername())){
-                found = true; //user found with same username
-                break;
-            }
-		}
-		if(found) {
-			return "user already exists";
+		// logic -> user.username != null
+		Optional<User> userentity = repo.findById(user.getId());
+		if(userentity.isPresent()) {
+			return "Username already exists!";
 		}
 		else {
 			repo.save(user);
@@ -73,9 +62,9 @@ public class UserService {
 			if(user.get().getPassword().equals(password.getOldPassword())){
 				user.get().setPassword(password.getNewPassword());
 				repo.save(user.get());
-				return "Password updated";
+				return "Password updated successfully!!";
 			}
-			else return "Password do not match";
+			else return "Incorrect current password!";
 		}
 		else {
 			return "User is not present";
