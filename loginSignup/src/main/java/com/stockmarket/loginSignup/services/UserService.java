@@ -30,10 +30,24 @@ public class UserService {
         return found;
     }
     
-	public User getSignup(User user) {
-		// logic -> user.username != null, 
-		return repo.save(user);
+	public String getSignup(User user) {
+		// logic -> user.username != null,
+		Iterable<User> iterable = repo.findAll();
+		boolean found = false;
+		for(User u : iterable) {
+            if(u.getUsername().equals(user.getUsername())){
+                found = true; //user found with same username
+                break;
+            }
 		}
+		if(found) {
+			return "user already exists";
+		}
+		else {
+			repo.save(user);
+			return "New user created";
+		}
+	}
 
 	public boolean addContact(Integer userId, Contact contact) {
 		Optional<User> user = repo.findById(userId);
@@ -67,11 +81,13 @@ public class UserService {
 			return "User is not present";
 		}
 	}
-//	public String updateContact(Contact contact, Integer userId) {
-//		Optional<User> user = repo.findById(userId);
-//		if(user.isPresent()) {
-//			
-//		}
-//		else return "User is not present";
-//	}
+	public String updateContact(Contact contact, Integer userId) {
+		Optional<User> user = repo.findById(userId);
+		if(user.isPresent()) {
+			user.get().setContact(contact);
+			repo.save(user.get());
+			return "Contact updated";
+		}
+		else return "User is not present";
+	}
 }
