@@ -45,9 +45,9 @@ public class UserController {
     }
     
     @PostMapping("/register")
-    public ResponseEntity<String> getSignup(@RequestBody User user){
-        String u = userService.getSignup(user);
-        return new ResponseEntity<String>(u, HttpStatus.OK);
+    public ResponseEntity<Boolean> getSignup(@RequestBody User user){
+        boolean u = userService.getSignup(user);
+        return new ResponseEntity<Boolean>(u, HttpStatus.OK);
     }
     @PostMapping("{userId}/contact")
     public ResponseEntity<Boolean> addContact(@RequestBody Contact contact, @PathVariable Integer userId){

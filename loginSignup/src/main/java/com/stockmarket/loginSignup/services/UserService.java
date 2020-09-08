@@ -19,22 +19,47 @@ public class UserService {
 
     public boolean getLogin(User user){
     	//user is not null-->check at UI end
-    	Optional<User> userentity = repo.findById(user.getId());
-		if(userentity.isPresent()) {
-            return userentity.get().getPassword().equals(user.getPassword()); 
+//    	Optional<User> userentity = repo.findById(user.getId());
+//		if(userentity.isPresent()) {
+//            return userentity.get().getPassword().equals(user.getPassword()); 
+//		}
+//        return false;
+    	Iterable<User> iterable = repo.findAll();
+		boolean found = false;
+		for(User u : iterable) {
+            if(u.getUsername().equals(user.getUsername())){
+                found = u.getPassword().equals(user.getPassword());
+                break;
+            }
 		}
-        return false;
+
+        return found;
     }
     
-	public String getSignup(User user) {
+	public boolean getSignup(User user) {
 		// logic -> user.username != null
-		Optional<User> userentity = repo.findById(user.getId());
-		if(userentity.isPresent()) {
-			return "Username already exists!";
+//		Optional<User> userentity = repo.findById(user.getId());
+//		if(userentity.isPresent()) {
+//			return false;
+//		}
+//		else {
+//			repo.save(user);
+//			return true;
+//		}
+		Iterable<User> iterable = repo.findAll();
+		boolean found = false;
+		for(User u : iterable) {
+            if(u.getUsername().equals(user.getUsername())){
+                found = true; //user found with same username
+                break;
+            }
+		}
+		if(found) {
+			return false;
 		}
 		else {
 			repo.save(user);
-			return "New user created";
+			return true;
 		}
 	}
 

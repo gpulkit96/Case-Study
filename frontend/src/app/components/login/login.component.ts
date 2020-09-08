@@ -26,17 +26,16 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
   }
   onSubmit(form: NgForm){
-    console.log('form value: ', form.value);
+    // console.log('form value: ', form.value);
     this.user.addUser(form.value.username, form.value.password);
     this.http.post<boolean>('http://localhost:8085/users/login', this.user ,{ headers }).subscribe(data=>{
       this.login=data;
-      console.log(data);
     }
     )
     this.getLogin();
   }
   getLogin(){
-    console.log('tring to get login')
+    // console.log('tring to get login');
     if(this.login){
       this.userService.user.isValid = true;
       this.router.navigate(['','home'])

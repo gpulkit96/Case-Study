@@ -1,4 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import {NgForm} from '@angular/forms';
+import { User } from '../login/User';
+import { HttpClient } from '@angular/common/http';
+
+const headers = {'Content-Type': 'application/json'}
 
 @Component({
   selector: 'app-signup',
@@ -7,9 +12,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SignupComponent implements OnInit {
 
-  constructor() { }
-
+  constructor(private http:HttpClient) { }
+  user= new User();
   ngOnInit(): void {
   }
-
+  onSubmit(form: NgForm){
+    
+    this.user.addUser(form.value.username, form.value.password);
+    this.http.post<Boolean>('http://localhost:8085/users/register', this.user ,{ headers }).subscribe(data=>{
+      console.log(data);
+    }
+    )
+  }
 }
