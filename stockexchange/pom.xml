@@ -9,10 +9,10 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.stockmarket</groupId>
-	<artifactId>sector-service</artifactId>
+	<artifactId>stockexchange-service</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>sector-service</name>
-	<description>microservice to retreive data of a company</description>
+	<name>stockexchange-service</name>
+	<description>microservice to manage stock exchange</description>
 
 	<properties>
 		<java.version>1.8</java.version>
