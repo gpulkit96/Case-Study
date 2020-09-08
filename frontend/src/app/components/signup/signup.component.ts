@@ -20,7 +20,12 @@ export class SignupComponent implements OnInit {
     
     this.user.addUser(form.value.username, form.value.password);
     this.http.post<Boolean>('http://localhost:8085/users/register', this.user ,{ headers }).subscribe(data=>{
-      console.log(data);
+      if(data){
+        console.log("User created");
+      }
+      else{
+        console.log("User already exists");
+      }
     }
     )
   }

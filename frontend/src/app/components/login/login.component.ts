@@ -30,12 +30,12 @@ export class LoginComponent implements OnInit {
     this.user.addUser(form.value.username, form.value.password);
     this.http.post<boolean>('http://localhost:8085/users/login', this.user ,{ headers }).subscribe(data=>{
       this.login=data;
+      this.getLogin();
     }
     )
-    this.getLogin();
   }
   getLogin(){
-    // console.log('tring to get login');
+    console.log('trying to get login');
     if(this.login){
       this.userService.user.isValid = true;
       this.router.navigate(['','home'])

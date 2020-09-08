@@ -40,8 +40,24 @@ public class CompanyService {
     public Optional<Company> getCompany(Integer id) {
         return companyRepository.findById(id);
     }
-    public void addCompany(Company company) {
-    	companyRepository.save(company);
+    public boolean addCompany(Company company) {
+    	Optional<Company> c = companyRepository.findByName(company.getName());
+    	if(c.isPresent()) {
+    		return false;
+    	}
+    	else {
+    		companyRepository.save(company);
+    		return true;
+    	}
+//    	boolean found = false;
+//    	for (Company c: it) {
+//    		if(c.getName().equals(company.getName())) {
+//    			found = true;
+//    			break;
+//    		}
+//    	}
+//    	if(found )
+    	
     }
     public void updateCompany(Integer id, Company company) {
     	companyRepository.save(company);

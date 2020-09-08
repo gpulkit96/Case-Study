@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -19,6 +20,7 @@ import companydata.services.CompanyService;
 
 @RestController
 @RequestMapping("/company")
+@CrossOrigin(origins="http://localhost:4200")
 public class CompanyController {
 
     @Autowired
@@ -38,8 +40,8 @@ public class CompanyController {
     }
     
     @PostMapping("/add")
-    public void addCompany(@RequestBody Company company){
-    	companyService.addCompany(company);
+    public Boolean addCompany(@RequestBody Company company){
+    	return companyService.addCompany(company);
     }
     @PutMapping("{id}")
     public void updateCompany(@PathVariable Integer id, @RequestBody Company company){
