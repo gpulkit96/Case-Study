@@ -7,11 +7,12 @@ import { ManageCompaniesComponent } from './components/manage-companies/manage-c
 import { LoginComponent } from './components/login/login.component';
 import { SignupComponent } from './components/signup/signup.component';
 import { LoginGuard } from './components/guards/login.guard';
+import { LogGuard } from './components/guards/log.guard';
 import { SignupGuard } from './components/guards/signup.guard';
 
 const routes: Routes = [
   {path: 'home', component: CompareChartsComponent},
-  {path: 'new-company', component: NewCompanyComponent, canActivate: [LoginGuard]},
+  {path: 'new-company', component: NewCompanyComponent, canActivate: [LogGuard]},
   {path: 'upload-excel', component: UploadExcelComponent, canActivate: [LoginGuard]},
   {path: 'manage-companies', component:ManageCompaniesComponent, canActivate: [LoginGuard]},
   {path: 'login', component:LoginComponent, canActivate:[SignupGuard]},

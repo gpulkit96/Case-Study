@@ -30,6 +30,7 @@ export class LoginComponent implements OnInit {
     this.user.addUser(form.value.username, form.value.password);
     this.http.post<boolean>('http://localhost:8085/users/login', this.user ,{ headers }).subscribe(data=>{
       this.login=data;
+      this.userService.user.userType = this.user.user_type;
       this.getLogin();
     }
     )

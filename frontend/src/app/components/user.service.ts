@@ -8,7 +8,9 @@ export class UserService {
   public user: any = {
     name: 'Angular',
     email: 'angular@gmail.com',
-    isValid: false
+    isValid: false,
+    userType: 'unknown',
+    message: ''
   }
   constructor() { }
 }

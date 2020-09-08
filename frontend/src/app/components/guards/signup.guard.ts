@@ -11,8 +11,8 @@ export class SignupGuard implements CanActivate{
     canActivate():boolean{
 
         if(this.userService.user.isValid==true){
-            console.log("already logged in");
-            this.router.navigate(['', 'profile', this.userService.user.name])
+            this.userService.user.message = 'Already logged in';
+            this.router.navigate(['', 'home', this.userService.user.name])
         } else{
             console.log("Not logged in");
         }

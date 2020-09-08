@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {NgForm} from '@angular/forms';
 import { User } from '../login/User';
+import { CanActivate, Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 
 const headers = {'Content-Type': 'application/json'}
@@ -12,7 +13,7 @@ const headers = {'Content-Type': 'application/json'}
 })
 export class SignupComponent implements OnInit {
 
-  constructor(private http:HttpClient) { }
+  constructor(private http:HttpClient, private router:Router) { }
   user= new User();
   ngOnInit(): void {
   }
@@ -28,5 +29,6 @@ export class SignupComponent implements OnInit {
       }
     }
     )
+    this.router.navigate(['', 'login'])
   }
 }

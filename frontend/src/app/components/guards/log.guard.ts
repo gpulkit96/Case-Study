@@ -5,14 +5,19 @@ import { UserService } from '../user.service';
 @Injectable({
     providedIn: 'root'
 })
-export class LoginGuard implements CanActivate{
+export class LogGuard implements CanActivate{
 
     constructor(private userService:UserService, private router:Router){}
     canActivate():boolean{
 
         if(this.userService.user.isValid==true){
-            this.userService.user.message = 'Already logged in';
-            return this.userService.user.isValid;
+            if(this.userService.user.userType=='admin')
+                return true;
+            else{
+                this.userService.user.message = 'Login using admin credentials';
+                this.router.navigate(['', 'home'])
+                return false;
+            }
         } else{
             console.log("Not logged in");
             this.router.navigate(['', 'login'])

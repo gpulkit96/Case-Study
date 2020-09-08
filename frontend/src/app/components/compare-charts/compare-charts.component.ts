@@ -1,12 +1,18 @@
 import { Component, OnInit } from '@angular/core';
 import { ChartOptions, ChartType, ChartDataSets } from 'chart.js';
 import { Color, Label } from 'ng2-charts';
+import { UserService } from '../user.service';
+
 @Component({
   selector: 'app-compare-charts',
   templateUrl: './compare-charts.component.html',
   styleUrls: ['./compare-charts.component.scss']
 })
 export class CompareChartsComponent {
+  message = null;
+  constructor(private userService:UserService) {
+    this.message = this.userService.user.message;
+  }
 
   barChartOptions: ChartOptions = {
     responsive: true,
