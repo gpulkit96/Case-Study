@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-
+import { CompanyService } from '../company.service';
 import * as XLSX from 'xlsx';
 type AOA = any[][];
 // import { FormBuilder } from '@angular/forms';
@@ -17,7 +17,7 @@ export class UploadExcelComponent implements OnInit {
   emps = [];
   message = null;
   fetch;
- public constructor(private http:HttpClient){
+ public constructor(private http:HttpClient, private companyService:CompanyService){
   // const target: string = <string>(evt.target);
   this.message = null;
   this.fetch = this.http.get("http://dummy.restapiexample.com/api/v1/employees") // can be the link for our github repo with data
@@ -49,7 +49,23 @@ export class UploadExcelComponent implements OnInit {
   
         /* save data */
         this.data = <AOA>(XLSX.utils.sheet_to_json(ws, { header: 1 }));
-        console.log(this.data);
+        
+        if(this.data[0].length==5){
+          
+          if(this.data[0][0].trim()=='Company Code' && this.data[0][1].trim()=='Stock Exchange' && this.data[0][2].trim()=='Price Per Share(in Rs)'
+          && this.data[0][3].trim()=='Date' && this.data[0][4].trim()=='Time'){
+            console.log('data in proper format');
+            this.companyService.company = this.data;
+            // for(let i of this.companyService.company){
+            //   console.log(i.length);
+            // }
+            console.log(this.companyService.company.length);
+          }
+          else console.log('data not in proper format');
+        }
+        else{
+          console.log('data not in proper format');
+        }
       };
       reader.readAsBinaryString(target.files[0]);
     }
